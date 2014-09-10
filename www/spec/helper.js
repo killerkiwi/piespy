@@ -16,35 +16,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var app = {
-	deviceReadyDeferred : $.Deferred(),
-	jqReadyDeferred : $.Deferred(),
+afterEach(function() {
+    document.getElementById('stage').innerHTML = '';
+});
 
-	initialize: function() {
-		this.bindEvents();
-	},
-
-	// Bind Event 
-	bindEvents: function() {
-		document.addEventListener('deviceready', this.onDeviceReady, false);
-	},
-
-	// deviceready Event Handler
-	onDeviceReady: function() {
-		this.deviceReadyDeferred.resolve();
-	},
-
-	checkConnection : function() {
-	    return navigator.connection.type != Connection.NONE;
-	}
+var helper = {
+    trigger: function(obj, name) {
+        var e = document.createEvent('Event');
+        e.initEvent(name, true, true);
+        obj.dispatchEvent(e);
+    },
+    getComputedStyle: function(querySelector, property) {
+        var element = document.querySelector(querySelector);
+        return window.getComputedStyle(element).getPropertyValue(property);
+    }
 };
-
-// Check jquery loaded
-$(document).ready(function() {
-	app.jqReadyDeferred.resolve();
-});
-
-// When jquery and device are ready
-$.when(app.deviceReadyDeferred, app.jqReadyDeferred).then(function(){
-	pieFinder();
-});

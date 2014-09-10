@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
     distributed with this work for additional information
@@ -21,21 +23,30 @@
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <meta name="msapplication-tap-highlight" content="no" />
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/black-tie/jquery-ui.css" />
         <title>Hello World</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
+	<div id="dialog-message" title="Pie Finder">
+	<p>
+	<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 0px 0;"></span>
+	<span class="status-text ">Finding you.. (be sure to allow access)</span>
+	</p>
+	<div id="progressbar"></div>
+	<p class='status-details'>
+	<em>Using billions of dollars of tech to find pies since 2014</em></b>.
+	</p>
+	</div>
+	<div id="google_map_canvas" class="google_map_canvas"></div>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/piefinder.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
